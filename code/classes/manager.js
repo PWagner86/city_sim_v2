@@ -10,6 +10,15 @@ export default class Manager {
 
     init() {
         console.log('Starting Simulation...');
-        this.city.init(this.mainCtx);
+        this.city.init();
+        this.#animate();
+    }
+
+    #animate() {
+        requestAnimationFrame(() => {
+            this.mainCtx.clearRect(0, 0, this.mainCanvas.width, this.mainCanvas.height);
+            this.city.drawStreets(this.mainCtx);
+            this.#animate();
+        })
     }
 }

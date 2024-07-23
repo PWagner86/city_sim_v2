@@ -8,48 +8,49 @@ export default class City {
         this.matrix = new Matrix(this.width, this.height);
     }
 
-    init(ctx) {
+    init() {
         this.matrix.setMatrix((this.width / 50), (this.height / 30));
-        // this.matrix.draw(ctx);
-        this.#drawStreets(ctx);
     }
 
-    #drawStreets(ctx) {
+    drawStreets(ctx) {
+        const halfCityHeight = this.height / 2;
+        const halfCityWidth = this.width / 2;
+        const quarterCityWidth = this.width / 4;
+        const threeQuarterCityWidth = halfCityWidth + quarterCityWidth;
         const streetWidth = 40;
+        const halfStreetWidth = streetWidth / 2;
+
         ctx.fillStyle = "#cacaca";
         ctx.strokeStyle = "#ffee00";
         ctx.lineWidth = 2
+        ctx.setLineDash([7, 7]);
 
         // Middlestreet (Vertical)
-        ctx.fillRect((this.width / 2) - (streetWidth / 2), 0, streetWidth, this.height);
+        ctx.fillRect(halfCityWidth - halfStreetWidth, 0, streetWidth, this.height);
         ctx.beginPath();
-        ctx.setLineDash([5, 5]);
-        ctx.moveTo(this.width / 2, 0);
-        ctx.lineTo(this.width / 2, this.height);
+        ctx.moveTo(halfCityWidth, 0);
+        ctx.lineTo(halfCityWidth, this.height);
         ctx.stroke();
 
         // Left Street (Vertical)
-        ctx.fillRect((this.width / 4) - (streetWidth / 2), 0, streetWidth, this.height);
+        ctx.fillRect(quarterCityWidth - halfStreetWidth, 0, streetWidth, this.height);
         ctx.beginPath();
-        ctx.setLineDash([5, 5]);
-        ctx.moveTo(this.width / 4, 0);
-        ctx.lineTo(this.width / 4, this.height);
+        ctx.moveTo(quarterCityWidth, 0);
+        ctx.lineTo(quarterCityWidth, this.height);
         ctx.stroke();
 
         // Right Street (Vertical)
-        ctx.fillRect((this.width / 2) + (this.width / 4) - (streetWidth / 2), 0, streetWidth, this.height);
+        ctx.fillRect(threeQuarterCityWidth - halfStreetWidth, 0, streetWidth, this.height);
         ctx.beginPath();
-        ctx.setLineDash([5, 5]);
-        ctx.moveTo((this.width / 2) + (this.width / 4), 0);
-        ctx.lineTo((this.width / 2) + (this.width / 4), this.height);
+        ctx.moveTo(threeQuarterCityWidth, 0);
+        ctx.lineTo(threeQuarterCityWidth, this.height);
         ctx.stroke();
 
         // Mainstreet (Horizontal)
-        ctx.fillRect(0, (this.height / 2) - (streetWidth / 2), this.width, streetWidth);
+        ctx.fillRect(0, halfCityHeight - halfStreetWidth, this.width, streetWidth);
         ctx.beginPath();
-        ctx.setLineDash([7, 7]);
-        ctx.moveTo(0, this.height / 2);
-        ctx.lineTo(this.width, this.height / 2);
+        ctx.moveTo(0, halfCityHeight);
+        ctx.lineTo(this.width, halfCityHeight);
         ctx.stroke();
     }
 }
