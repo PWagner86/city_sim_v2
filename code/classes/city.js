@@ -6,11 +6,26 @@ export default class City {
         this.width = width;
         this.height = height;
         this.matrix = new Matrix(this.width, this.height);
+        this.cityCenter = {
+            x: this.width / 2,
+            y: this.height / 2
+        };
     }
 
     init() {
         this.matrix.setMatrix((this.width / 50), (this.height / 30));
     }
+
+    drawBuildings(ctx) {
+        const tileWidth = this.width / 50;
+        const tileHeight = this.height / 30;
+        ctx.fillStyle = "red";
+
+        ctx.save();
+        ctx.fillRect(tileWidth * 2, tileHeight * 4, tileWidth * 8, tileHeight * 6 );
+        ctx.restore();
+    }
+
 
     drawStreets(ctx) {
         const halfCityHeight = this.height / 2;
@@ -25,6 +40,7 @@ export default class City {
         ctx.lineWidth = 2
         ctx.setLineDash([7, 7]);
 
+        ctx.save();
         // Middlestreet (Vertical)
         ctx.fillRect(halfCityWidth - halfStreetWidth, 0, streetWidth, this.height);
         ctx.beginPath();
@@ -52,5 +68,7 @@ export default class City {
         ctx.moveTo(0, halfCityHeight);
         ctx.lineTo(this.width, halfCityHeight);
         ctx.stroke();
+
+        ctx.restore();
     }
 }

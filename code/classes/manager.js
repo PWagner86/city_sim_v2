@@ -18,6 +18,7 @@ export default class Manager {
         requestAnimationFrame(() => {
             this.mainCtx.clearRect(0, 0, this.mainCanvas.width, this.mainCanvas.height);
             this.city.drawStreets(this.mainCtx);
+            this.city.drawBuildings(this.mainCtx);
             this.#animate();
         })
     }
