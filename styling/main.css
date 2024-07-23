@@ -5,6 +5,7 @@
 
 :root {
     --main-font: "Montserrat";
+    --canvas-color: #808080;
 }
 
 *,
@@ -42,5 +43,5 @@ body {
 }
 
 .main__canvas {
-    background-color: red;
+    background-color: var(--canvas-color);
 }
