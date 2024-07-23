@@ -22,6 +22,7 @@ body {
     height: 100svh;
     font-family: var(--main-font);
     overflow: hidden;
+    /* background-color: #ffee00; */
 }
 
 .main__header {
