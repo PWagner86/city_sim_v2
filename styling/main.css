@@ -1,0 +1,46 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("../assets/font/static/Montserrat-Regular.ttf") format("ttf");
+}
+
+:root {
+    --main-font: "Montserrat";
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 2000px;
+    height: 100svh;
+    font-family: var(--main-font);
+    overflow: hidden;
+}
+
+.main__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__title {
+    padding: 1rem 0;
+    font-size: 2.5rem;
+}
+
+.main__container {
+    height: calc(100svh - (1rem + 1rem + 2.5rem));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__canvas {
+    background-color: red;
+}
