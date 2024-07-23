@@ -22,6 +22,10 @@ export default class Tile {
         if(fill) {
             ctx.fillStyle = color;
             ctx.fill();
-        }
+        };
+
+        ctx.strokeText(this.id, this.center.x, this.center.y);
+        ctx.textAlign = "center";
+        ctx.baseLine = "middle";
     }
 }
